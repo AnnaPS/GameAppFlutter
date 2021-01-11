@@ -71,7 +71,7 @@ class ListGameWidget extends StatelessWidget {
                 ),
               ],
             )
-          : CircularProgressIndicator(),
+          : Center(child: CircularProgressIndicator()),
     );
   }
 }
