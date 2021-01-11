@@ -10,7 +10,7 @@ class ListGameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, top: 8.0),
-      child: _gameList.isNotEmpty && _gameList != null
+      child: _gameList != null && _gameList.isNotEmpty
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
