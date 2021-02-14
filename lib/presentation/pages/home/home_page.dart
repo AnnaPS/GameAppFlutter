@@ -21,19 +21,30 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         bottom: false,
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            BlocConsumer<HomeBloc, HomeState>(
-              listener: (context, state) {},
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0, left: 32, top: 32),
+              child: Text(
+                'Playstation 5 games',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is GetGamesSuccess) {
                   return ListGamesWidget(state.games);
                 } else if (state is GetGamesInProgress) {
                   return Center(child: CircularProgressIndicator());
                 } else {
-                  return Text((state as GetGamesFailure).error);
+                  return Center(child: Text((state as GetGamesFailure).error));
                 }
               },
             )

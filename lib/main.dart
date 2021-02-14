@@ -18,19 +18,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (BuildContext context) => HomeBloc(
-              GetGamesInProgress(),
-            ),
-          )
-        ],
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) => HomeBloc(
+            GetGamesInProgress(),
           ),
-          home: HomePage(),
-        ));
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Bloc/Firestore',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomePage(),
+      ),
+    );
   }
 }

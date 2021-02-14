@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:game_app/data/models/game_entity.dart';
+import 'package:game_app/presentation/widgets/game_item.dart';
 
 class ListGamesWidget extends StatelessWidget {
-  ListGamesWidget(this._gameList);
-
+  const ListGamesWidget(this._gameList);
   final List<Game> _gameList;
 
   @override
@@ -13,31 +13,14 @@ class ListGamesWidget extends StatelessWidget {
       child: _gameList != null && _gameList.isNotEmpty
           ? Center(
               child: Container(
-                height: 600,
+                height: MediaQuery.of(context).size.height * .75,
                 child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _gameList.length,
-                    itemBuilder: (context, index) {
-                      var game = _gameList[index];
-                      return Container(
-                        width: 350,
-                        child: Card(
-                            clipBehavior: Clip.hardEdge,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            elevation: 8,
-                            shadowColor: Colors.blueGrey,
-                            margin: EdgeInsets.all(16),
-                            child: Container(
-                              height: 200,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(game.image),
-                                      fit: BoxFit.fill)),
-                            )),
-                      );
-                    }),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _gameList.length,
+                  itemBuilder: (context, index) {
+                    return GameItem(_gameList[index]);
+                  },
+                ),
               ),
             )
           : Center(child: CircularProgressIndicator()),
