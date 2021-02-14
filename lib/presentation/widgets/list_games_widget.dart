@@ -12,7 +12,7 @@ class ListGamesWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16.0, top: 8.0),
       child: _gameList != null && _gameList.isNotEmpty
           ? Center(
-              child: Container(
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height * .75,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -23,7 +23,7 @@ class ListGamesWidget extends StatelessWidget {
                 ),
               ),
             )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }

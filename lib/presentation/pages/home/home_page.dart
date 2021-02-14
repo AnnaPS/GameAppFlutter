@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    context.read<HomeBloc>().add(GetGamesEvent('playstation5'));
+    context.read<HomeBloc>().add(const GetGamesEvent('playstation5'));
     super.initState();
   }
 
@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0, left: 32, top: 32),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16.0, left: 32, top: 32),
               child: Text(
                 'Playstation 5 games',
                 style: TextStyle(
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                 if (state is GetGamesSuccess) {
                   return ListGamesWidget(state.games);
                 } else if (state is GetGamesInProgress) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else {
                   return Center(child: Text((state as GetGamesFailure).error));
                 }

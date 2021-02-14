@@ -6,7 +6,7 @@ class GetGameUC {
   final GamesRepository _gamesRepository;
 
   Future<List<Game>> call(String collectionName) async {
-    var games = await _gamesRepository.getGamesCollection(collectionName);
-    return games;
+    final _games = await _gamesRepository.getGamesCollection(collectionName);
+    return _games;
   }
 }

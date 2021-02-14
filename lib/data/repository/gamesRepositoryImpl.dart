@@ -3,15 +3,15 @@ import 'package:game_app/data/models/game_entity.dart';
 import 'package:game_app/data/repository/GamesRepository.dart';
 
 class GamesRepositoryImpl extends GamesRepository {
-  final FirestoreService _gameFirestoreService;
-
   GamesRepositoryImpl(this._gameFirestoreService)
       : assert(_gameFirestoreService != null);
 
+  final FirestoreService _gameFirestoreService;
+
   @override
   Future<List<Game>> getGamesCollection(String collectionName) async {
-    var games =
+    final _games =
         await _gameFirestoreService.getGamesByCollection(collectionName);
-    return games;
+    return _games;
   }
 }

@@ -7,11 +7,13 @@ import 'package:get_it/get_it.dart';
 final _injector = GetIt.instance;
 
 void setUp() {
-  _injector.registerLazySingleton<FirestoreService>(() => FirestoreService());
-  _injector.registerLazySingleton<GamesRepository>(
-      () => GamesRepositoryImpl(_injector<FirestoreService>()));
-
-  // Use Cases
-  _injector.registerLazySingleton<GetGameUC>(
-      () => GetGameUC(_injector<GamesRepository>()));
+  _injector
+    ..registerLazySingleton<FirestoreService>(() => FirestoreService())
+    ..registerLazySingleton<GamesRepository>(
+        () => GamesRepositoryImpl(_injector<FirestoreService>()))
+    ..registerLazySingleton<GetGameUC>(
+      () => GetGameUC(
+        _injector<GamesRepository>(),
+      ),
+    );
 }

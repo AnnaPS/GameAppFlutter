@@ -19,8 +19,8 @@ class GameItem extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.5),
               spreadRadius: 3,
-              blurRadius: 7,
-              offset: Offset(0, 2), // changes position of shadow
+              blurRadius: 8,
+              offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
